@@ -81,8 +81,8 @@ no_real_present = times(3,indices2)==0;
 times_diss = times(2, indices2) .* no_real_present + times(3,indices2);  % use real value when available
 
 relative_increase = (times_diss - times(1, indices2))./times(1, indices2);
-fig3 = figure('Visible','off', 'Position',[0 0 1500 450]);
-
+fig3 = figure('Visible','off', 'Position',[0 0 1500 350]);
+clear labels
 for i =1:num_measurements
     if relative_increase(i) < 10
         labels(i) = num2str(round(relative_increase(i)));
@@ -90,6 +90,7 @@ for i =1:num_measurements
         labels(i) = "";
     end
 end
+
 b = bar(0:num_measurements-1, relative_increase, 'LineWidth', 2, 'FaceColor','flat', Labels=labels, FontSize=20);
 
 for i = 1:num_measurements
@@ -107,7 +108,7 @@ set(gca, 'FontSize', 30)
 grid on;
 set(gca,'yscale','linear');
 set(gca, 'xticklabel', []);
-yticks([10, 100, 300, 500])
+yticks([100, 300, 500])
 
 saveas(fig3, fullfile("figures", "compcostrel.png"));
 
