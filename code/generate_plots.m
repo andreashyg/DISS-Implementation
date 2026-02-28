@@ -37,11 +37,15 @@ u = 2^(-53);
 
 fig1 = figure('Visible','off', 'Position',[0 0 1500 800]);
 
-scatter(0:num_measurements-1, errors(1,indices), 'x', 'DisplayName','\texttt{logm}','LineWidth', 2,'SizeData',90);
+sc1 = scatter(0:num_measurements-1, errors(1,indices), 500, 'x', 'LineWidth', 500, 'DisplayName','\texttt{logm}','LineWidth', 2);
+sc1.LineWidth = 4;
 hold on;
-scatter(0:num_measurements-1, errors(2,indices),'o', 'DisplayName','DISS (complex)','LineWidth', 2,'SizeData',70);
-scatter(0:num_measurements-1, errors(3,indices), 'b', 'square', ...%'filled', 
-    'DisplayName', 'DISS (real)','LineWidth', 1,'SizeData',150);
+
+sc2 = scatter(0:num_measurements-1, errors(2,indices), 500, 'o', 'LineWidth', 150, 'DisplayName','DISS (complex)','LineWidth', 2);
+sc2.LineWidth = 4;
+
+scatter(0:num_measurements-1, errors(3,indices), 300, 'b', 'square', ... 
+    'DisplayName', 'DISS (real)','LineWidth', 4);
 colororder("reef")
 xlabel('$A$ sorted by $\kappa_{\log}(A)u$', 'Interpreter','latex', 'FontSize', 35);
 ylabel('Forward error', 'Interpreter', 'latex', 'FontSize',35);
